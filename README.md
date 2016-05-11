@@ -2,7 +2,7 @@
 Mobilna aplikacija za pohranu, praćenje i izvještavanje o stanju krvnog tlaka korisnika.
 
 ### Autori
-- **Risek	Matija**	mrisek@unipu.hr
+- **Risek	Matija**	mrisek@unipu.hr (vođa tima)
 - **Kovačević	Antun**	akovace@unipu.hr
 - **Jaranović	Dijana**	djaranovic@unipu.hr
 
