@@ -12,4 +12,4 @@ Mobilna aplikacija za pohranu, praćenje i izvještavanje o stanju krvnog tlaka 
 Mobilne aplikacije, Ak.g. 2015./2016.  
 Voditelj: **Siniša Sovilj** (ssovilj@unipu.hr)
 
-Neka promjena
+Ubačen projekt
