@@ -1,0 +1,27 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/main_linear_layout">
+
+    <TextView android:text="Početna stranica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp" />
+
+    <TextView android:text="Unos novog krvnog tlaka:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/novi_unos_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novi unos"
+        android:onClick="unosNovogKrvnogTlaka"/>
+
+</LinearLayout>
