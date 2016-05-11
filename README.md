@@ -2,10 +2,9 @@
 Mobilna aplikacija za pohranu, praćenje i izvještavanje o stanju krvnog tlaka korisnika.
 
 ### Autori
-- **Risek	Matija**	mrisek@unipu.hr (vođa tima)
-- **Kovačević	Antun**	akovace@unipu.hr
-- **Jaranović	Dijana**	djaranovic@unipu.hr
-
+- **Risek	Matija**	(mrisek@unipu.hr)
+- **Kovačević	Antun**	(akovace@unipu.hr)
+- **Jaranović	Dijana**	(djaranovic@unipu.hr)
 
 ### Organizacija
 Sveučilište Jurja Dobrile u Puli  
