@@ -11,3 +11,6 @@ Mobilna aplikacija za pohranu, praćenje i izvještavanje o stanju krvnog tlaka 
 [Odjel za informacijsko-komunikacijske tehnologije](http://www.unipu.hr/index.php?id=1933)  
 Mobilne aplikacije, Ak.g. 2015./2016.  
 Voditelj: **Siniša Sovilj** (ssovilj@unipu.hr)
+
+
+### ja sam Antun
