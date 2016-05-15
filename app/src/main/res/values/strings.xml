@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">JRKmed</string>
+    <string name="action_settings">Postavke</string>
+    <string name="Add">Dodaj</string>
+    <string name="sistolicki">Sistolički</string>
+    <string name="dijastolicki">Dijastolički</string>
+    <string name="puls">Puls</string>
+    <string name="title_activity_chart">Graf</string>
+    <string name="wiev">Povjest</string>
+    <string name="stanje">Stanje</string>
+</resources>
