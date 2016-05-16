@@ -13,10 +13,13 @@ import android.widget.EditText;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity{
+
+    private ArrayList<String> results = new ArrayList<String>();
 
     private static final String EXTRA_KEY = "poviseni";
     private static final String EXTRA_KEY2 = "normalni";
@@ -64,7 +67,28 @@ public class MainActivity extends AppCompatActivity{
 
 
         }
-        showMessage1("datum | sist | dijast | puls", buffer.toString());
+        //showMessage1("datum | sist | dijast | puls", buffer.toString());
+
+
+
+
+        if (res != null ) {
+            if (res.moveToFirst()) {
+                do {
+                    String firstName = res.getString(4);
+                    int age = res.getInt(3);
+                    results.add("Name: " + firstName + ",Age: " + age);
+                }while (res.moveToNext());
+            }
+        }
+
+
+
+
+
+
+
+
     }
 
 
