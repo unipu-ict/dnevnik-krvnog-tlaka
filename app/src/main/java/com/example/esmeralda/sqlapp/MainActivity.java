@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         }
-        //showMessage1("datum | sist | dijast | puls", buffer.toString());
+        showMessage1("datum | sist | dijast | puls", buffer.toString());
 
 
 
