@@ -28,10 +28,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd. MM. yyyy");
     String currentDateandTime = sdf.format(new Date());
-    Calendar c = Calendar.getInstance();
-    int date = c.get(Calendar.DAY_OF_MONTH);
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -44,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String sistolicki,String dijastolicki,String puls) {
+    public boolean insertData(int sistolicki,int dijastolicki,int puls) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,sistolicki);

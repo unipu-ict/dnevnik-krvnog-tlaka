@@ -1,96 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-android:paddingRight="@dimen/activity_horizontal_margin"
-android:paddingTop="80dp"
-android:paddingBottom="@dimen/activity_vertical_margin"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="@string/sistolicki"
-    android:id="@+id/textView"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="@string/dijastolicki"
-    android:id="@+id/textView2"
-    android:layout_below="@+id/sistolicki"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="@string/puls"
-    android:id="@+id/textView3"
-    android:layout_below="@+id/dijastolicki"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
-
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/sistolicki"
-    android:layout_alignTop="@+id/textView"
-    android:layout_toRightOf="@+id/textView"
-    android:layout_toEndOf="@+id/textView"
-    android:inputType="numberDecimal" />
-
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/dijastolicki"
-    android:layout_alignTop="@+id/textView2"
-    android:layout_toRightOf="@+id/textView2"
-    android:layout_toEndOf="@+id/textView2"
-    android:inputType="numberDecimal"/>
-
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/puls"
-    android:layout_below="@+id/dijastolicki"
-    android:layout_toRightOf="@+id/textView3"
-    android:layout_toEndOf="@+id/textView3"
-    android:inputType="numberDecimal"/>
-
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/Add"
-    android:id="@+id/button_add"
-    android:layout_below="@+id/puls"
-    android:layout_toLeftOf="@+id/sistolicki"
-    android:layout_toStartOf="@+id/sistolicki" />
-
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/wiev"
-        android:id="@+id/buttonwiev"
-        android:layout_alignTop="@+id/button_add"
-        android:layout_toRightOf="@+id/button_add"
-        android:layout_toEndOf="@+id/button_add" />
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:minHeight="250dp"
+        android:layout_margin="0dp"
+        android:background="@color/colorUnos">
 
-    <Button
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="130dp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26dp"
+                android:textAlignment="center"
+                android:layout_weight="3"
+                android:hint="Sist"
+                android:id="@+id/sistolicki"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:text="/"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26dp"
+                android:textAlignment="center"
+                android:layout_weight="3"
+                android:hint="Diast"
+                android:id="@+id/dijastolicki"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26dp"
+                android:text="  ("/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:ems="4"
+                android:hint="Puls"
+                android:id="@+id/puls"
+                android:inputType="numberDecimal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26dp"
+                android:text=")"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/stanje"
-        android:id="@+id/buttonsve"
-        android:layout_alignTop="@+id/buttonwiev"
-        android:layout_toRightOf="@+id/buttonwiev"
-        android:layout_toEndOf="@+id/buttonwiev" />
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="0dp">
 
-</RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/Add"
+            android:id="@+id/button_add" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/wiev"
+            android:id="@+id/buttonwiev" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stanje"
+            android:id="@+id/buttonsve" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:id="@+id/zadnja_tri_textView" />
+
+</LinearLayout>
 
