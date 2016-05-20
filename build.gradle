@@ -5,7 +5,11 @@ buildscript {
         jcenter()
     }
     dependencies {
+<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:2.1.0'
+=======
+        classpath 'com.android.tools.build:gradle:1.1.0'
+>>>>>>> 2b6a8dd1a2570934783299c2438999be516f9370
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,8 +21,11 @@ allprojects {
         jcenter()
     }
 }
+<<<<<<< HEAD
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+=======
+>>>>>>> 2b6a8dd1a2570934783299c2438999be516f9370

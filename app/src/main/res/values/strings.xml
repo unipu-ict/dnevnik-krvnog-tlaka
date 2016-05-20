@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">JRKmed</string>
     <string name="action_settings">Postavke</string>
     <string name="Add">Dodaj</string>
@@ -8,4 +9,13 @@
     <string name="title_activity_chart">Graf</string>
     <string name="wiev">Povjest</string>
     <string name="stanje">Stanje</string>
+=======
+    <string name="app_name">DnevnikKrvnogTlaka</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_unos">UnosActivity</string>
+    <string name="title_activity_pregled">PregledActivity</string>
+    <string name="title_activity_povijest">PovijestActivity</string>
+>>>>>>> 2b6a8dd1a2570934783299c2438999be516f9370
 </resources>

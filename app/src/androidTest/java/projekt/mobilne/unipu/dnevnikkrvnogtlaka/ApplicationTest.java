@@ -1,4 +1,4 @@
-package com.example.esmeralda.sqlapp;
+package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
