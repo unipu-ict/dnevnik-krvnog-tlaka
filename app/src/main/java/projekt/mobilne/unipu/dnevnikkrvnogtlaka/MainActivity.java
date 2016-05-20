@@ -16,6 +16,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // Dodao komentar u activityoe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
