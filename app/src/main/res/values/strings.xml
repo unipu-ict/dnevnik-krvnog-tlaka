@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DnevnikKrvnogTlaka</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_unos">UnosActivity</string>
+    <string name="title_activity_pregled">PregledActivity</string>
+    <string name="title_activity_povijest">PovijestActivity</string>
+</resources>

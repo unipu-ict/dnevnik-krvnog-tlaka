@@ -1,0 +1,22 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="projekt.mobilne.unipu.dnevnikkrvnogtlaka.PregledActivity">
+
+    <item android:id="@+id/pocetna_menu"
+        android:title="Početna stranica"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/unos_menu"
+        android:title="Novi unos"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/povijest_menu"
+        android:title="Povijest"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+</menu>
