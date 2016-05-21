@@ -3,12 +3,13 @@ package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 
-public class PovijestActivity extends ActionBarActivity {
+public class PovijestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +17,7 @@ public class PovijestActivity extends ActionBarActivity {
         setContentView(R.layout.activity_povijest);
     }
 
-
+    // region NAVIGACIJA
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,4 +64,5 @@ public class PovijestActivity extends ActionBarActivity {
         Intent i  = new Intent(PovijestActivity.this, PregledActivity.class);
         startActivity(i);
     }
+    // endregion
 }
