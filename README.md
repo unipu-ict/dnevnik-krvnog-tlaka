@@ -3,8 +3,8 @@ Mobilna aplikacija za pohranu, praćenje i izvještavanje o stanju krvnog tlaka 
 
 ### Autori
 - **Matija Risek** 	(mrisek@unipu.hr)
--
--
+- **Antun Kovačević**  (akovace@unipu.hr)
+- **Dijana Jaranović** (djaranovic@unipu.hr)
 
 ### Organizacija
 [Sveučilište Jurja Dobrile u Puli](http://www.unipu.hr/)   
