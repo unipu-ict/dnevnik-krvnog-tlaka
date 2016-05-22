@@ -1,4 +1,4 @@
-﻿package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
+package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -18,5 +18,3 @@ public class Validacija {
         return true;
     }
 }
-
-//Validacija
