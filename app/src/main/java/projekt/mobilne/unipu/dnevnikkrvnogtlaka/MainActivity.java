@@ -45,26 +45,18 @@ public class MainActivity extends AppCompatActivity {
         // Instanciranje baze
         myDb = new DbHelper(this);
 
-        /* TODO: nisam siguran kaj je to
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */
+//        setSupportActionBar(toolbar);
 
-
-        /* TODO: nisam siguran koja je koja tipka
-        final EditText etSistolicki = (EditText) findViewById(R.id.etSistolicki);
-        final EditText etDijastolicki = (EditText) findViewById(R.id.etDijastolicki);
-        final EditText etPuls = (EditText) findViewById(R.id.etPuls);
-        etZadnjaTri = (EditText) findViewById(R.id.etZadnjaTri);
+        final EditText etSistolicki = (EditText) findViewById(R.id.sistolicki);
+        final EditText etDijastolicki = (EditText) findViewById(R.id.dijastolicki);
+        final EditText etPuls = (EditText) findViewById(R.id.puls);
+        etZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
 
         Button buttonDodajTlak = (Button)findViewById(R.id.buttonDodajTlak);
         Button buttonPovijest = (Button)findViewById(R.id.buttonPovijest);
         Button buttonStanje = (Button)findViewById(R.id.buttonStanje);
-        */
-
-        // TODO: implementirati onClick metode na sve tri tipke
-
-
 
         ispisZadnjaTriUnosa();
     }
