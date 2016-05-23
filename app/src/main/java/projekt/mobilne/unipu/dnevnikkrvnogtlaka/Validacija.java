@@ -14,7 +14,10 @@ public class Validacija {
     }
 
     public boolean validiraj(int sistolicki, int diastolicki, int puls) {
+
+        // ukoliko dođe do pogreške
         Toast.makeText(context, "Poruka o grešci", Toast.LENGTH_SHORT).show();
+
         return true;
     }
 }

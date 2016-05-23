@@ -1,6 +1,7 @@
 package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,45 +21,46 @@ import java.util.ArrayList;
 
 public class PregledActivity extends AppCompatActivity {
 
-    private static final String OPTIMALNI = "OPTIMALNI";
-    private static final String NORMALNI = "NORMALNI";
-    private static final String POVISENI = "POVISENI";
-    private static final String VISOKI = "VISOKI";
-    private static final String DOSTAVISOKI = "DOSTAVISOKI";
-    private static final String HIPERTENZIJA = "HIPERTENZIJA";
-    private static final String IZOLIRANI = "IZOLIRANI";
+    private int optimalni = 0;
+    private int normalni = 0;
+    private int poviseni = 0;
+    private int visoki = 0;
+    private int dostavisoki = 0;
+    private int hipertenzija = 0;
+    private int izolirani = 0;
 
-    public int optimalni;
-    public int normalni;
-    public int poviseni;
-    public int visoki;
-    public int dostavisoki;
-    public int hipertenzija;
-    public int izolirani;
+    private DbHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregled);
 
-        /* TODO: 22.5.2016. ne znam dali je taj toolbar fakat potreban
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */
+        myDb = new DbHelper(this);
+        myDb.getAllData();
 
-        // dohvat podataka poslanih iz MainActivity-ja
-        optimalni = getIntent().getIntExtra(OPTIMALNI, 1);
-        normalni = getIntent().getIntExtra(NORMALNI,1);
-        poviseni = getIntent().getIntExtra(POVISENI,1);
-        visoki = getIntent().getIntExtra(VISOKI,1);
-        dostavisoki = getIntent().getIntExtra(DOSTAVISOKI,1);
-        hipertenzija = getIntent().getIntExtra(HIPERTENZIJA,1);
-        izolirani = getIntent().getIntExtra(IZOLIRANI,1);
+        Cursor res = myDb.getAllData();
+        while (res.moveToNext()) {
+            if (res.getInt(1) < 120 & res.getInt(2) < 80) {
+                optimalni++;
+            }else if (res.getInt(1) < 130 & res.getInt(2) < 85) {
+                normalni++;
+            }else if (res.getInt(1) < 139 & res.getInt(2) < 89) {
+                poviseni++;
+            }else if (res.getInt(1) < 159 & res.getInt(2) < 99) {
+                visoki++;
+            }else if (res.getInt(1) < 179 & res.getInt(2) < 109) {
+                dostavisoki++;
+            }else if (res.getInt(1) < 159 & res.getInt(2) < 95) {
+                hipertenzija++;
+            }else if (res.getInt(1) > 140 & res.getInt(2) > 90) {
+                izolirani++;
+            }
+        }
 
         PieChart pieChart = (PieChart) findViewById(R.id.chart);
 
-
-        // ArrayList koji sadrži sve vrste tlaka
+        // ArrayList koji sadrži količinu pojedinih izmjerenih tlakova
         ArrayList<Entry> entries = new ArrayList<>();
         entries.add(new Entry(optimalni, 0));
         entries.add(new Entry(normalni, 1));
@@ -72,13 +74,14 @@ public class PregledActivity extends AppCompatActivity {
         PieDataSet dataset = new PieDataSet(entries, "|");
 
         ArrayList<String> labels = new ArrayList<String>();
-        labels.add("Opt");
-        labels.add("Nor");
-        labels.add("Pov");
-        labels.add("Vis");
-        labels.add("DostVis");
-        labels.add("Hiper");
-        labels.add("Izol");
+        if(optimalni>0)
+        labels.add("Optimalni");
+        labels.add("Normalni");
+        labels.add("Povišeni");
+        labels.add("Visoki");
+        labels.add("Dosta visoki");
+        labels.add("Hipertenzija");
+        labels.add("Izolirani");
 
         PieData data = new PieData(labels, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS); //

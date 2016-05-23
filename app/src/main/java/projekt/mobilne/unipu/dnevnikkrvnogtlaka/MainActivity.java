@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     */
 
     // region PRIVATNE VARIJABLE
-    // TODO: to bi ja mislim trebalo samo u PovijestActivity-ju
+    // TODO: to bi ja mislim trebalo samo u PovijestActivity-ju i UnosActivity-ju
     private static final String OPTIMALNI = "OPTIMALNI";
     private static final String NORMALNI = "NORMALNI";
     private static final String POVISENI = "POVISENI";
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String IZOLIRANI = "IZOLIRANI";
 
     private DbHelper myDb;
-    private TextView etZadnjaTri;
+    private TextView tvZadnjaTri;
     //endregion
 
     @Override
@@ -52,14 +52,56 @@ public class MainActivity extends AppCompatActivity {
         final EditText etSistolicki = (EditText) findViewById(R.id.sistolicki);
         final EditText etDijastolicki = (EditText) findViewById(R.id.dijastolicki);
         final EditText etPuls = (EditText) findViewById(R.id.puls);
-        etZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
+        tvZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
 
         Button buttonDodajTlak = (Button)findViewById(R.id.buttonDodajTlak);
-        Button buttonPovijest = (Button)findViewById(R.id.buttonPovijest);
         Button buttonStanje = (Button)findViewById(R.id.buttonStanje);
+        Button pov = (Button)findViewById(R.id.buttonPovijest);
+
+
+        buttonDodajTlak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!etSistolicki.getText().toString().equals("") &&
+                        !etDijastolicki.getText().toString().equals("") &&
+                        !etPuls.getText().toString().equals("")) {
+
+                    int sistolicki = Integer.parseInt(etSistolicki.getText().toString());
+                    int diastolicki = Integer.parseInt(etDijastolicki.getText().toString());
+                    int puls = Integer.parseInt(etPuls.getText().toString());
+
+                    Validacija validacija = new Validacija(getApplicationContext());
+                    if (validacija.validiraj(sistolicki, diastolicki, puls)) {
+                        dodajNoviUnos(sistolicki, diastolicki, puls);
+                        ispisZadnjaTriUnosa();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Poruka o grešci", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Prazni unosi", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        buttonStanje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View v = getWindow().getDecorView().findFocus();
+                povijestKrvnogTlaka(v);
+            }
+        });
+
+        pov.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         ispisZadnjaTriUnosa();
     }
+
+
 
     private void ispisZadnjaTriUnosa() {
         Cursor res = myDb.getZadnjaTri();
@@ -82,14 +124,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void dodajNoviUnos(int sistolicki, int dijastolicki, int puls) {
-        /* TODO: varijable moraju biti tipa string prilikom unosa u bazu
-        boolean isInserted = myDb.insertData(sistolicki, dijastolicki, puls);
+        boolean isInserted = myDb.insertData(String.valueOf(sistolicki), String.valueOf(dijastolicki), String.valueOf(puls));
 
         if (isInserted = true)
             Toast.makeText(MainActivity.this, "Tlak unešen", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(MainActivity.this, "Dalje nećeš moći", Toast.LENGTH_LONG).show();
-        */
     }
 
     private void ispisSvihUnosa() {
@@ -107,7 +147,8 @@ public class MainActivity extends AppCompatActivity {
             buffer.append(cur.getString(2) + " | ");
             buffer.append(cur.getString(3) + "\n");
         }
-        Toast.makeText(MainActivity.this, "Povijest unosa:\n" + buffer, Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this, "Povijest unosa:\n" + buffer, Toast.LENGTH_LONG).show();
+        tvZadnjaTri.setText(buffer);
     }
 
     /* TODO: to je u biti prelazak na PregledActivity, pogledati Antunov prototip

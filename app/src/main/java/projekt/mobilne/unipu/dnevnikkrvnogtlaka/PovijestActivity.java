@@ -1,21 +1,93 @@
 package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class PovijestActivity extends AppCompatActivity {
+
+    private DbHelper myDb;
+    private TextView povijest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_povijest);
+
+        povijest = (TextView) findViewById(R.id.tbPovijest);
+        povijest.setText("Povijest unosa:\n");
+
+        myDb = new DbHelper(this);
+        myDb.getAllData();
+
+        Cursor cur = myDb.getAllData();
+        if (cur.getCount() == 0) {
+            Toast.makeText(PovijestActivity.this, "Nema zapisa u bazi!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        StringBuffer buffer = new StringBuffer();
+
+        while (cur.moveToNext()) {
+            buffer.append(cur.getString(4) + " | ");
+            buffer.append(cur.getString(1) + " | ");
+            buffer.append(cur.getString(2) + " | ");
+            buffer.append(cur.getString(3) + "\n");
+        }
+
+        Cursor res = myDb.getAllData();
+        if (res.getCount() == 0) {
+            Toast.makeText(PovijestActivity.this, "Nema podataka.", Toast.LENGTH_LONG).show();
+        }
+        int optimalni = 0;
+        int normalni = 0;
+        int poviseni = 0;
+        int visoki = 0;
+        int dostavisoki = 0;
+        int hipertenzija = 0;
+        int izolirani = 0;
+
+
+        StringBuffer buffer2 = new StringBuffer();
+        while (res.moveToNext()) {
+            if (res.getInt(1) < 120 & res.getInt(2) < 80) {
+                optimalni++;
+            }else if (res.getInt(1) < 130 & res.getInt(2) < 85) {
+                normalni++;
+            }else if (res.getInt(1) < 139 & res.getInt(2) < 89) {
+                poviseni++;
+            }else if (res.getInt(1) < 159 & res.getInt(2) < 99) {
+                visoki++;
+            }else if (res.getInt(1) < 179 & res.getInt(2) < 109) {
+                dostavisoki++;
+            }else if (res.getInt(1) < 159 & res.getInt(2) < 95) {
+                hipertenzija++;
+            }else if (res.getInt(1) > 140 & res.getInt(2) > 90) {
+                izolirani++;
+            }
+        }
+        buffer.append("optimalni: "+ optimalni+ "\n");
+        buffer.append("normalni: "+ normalni+ "\n");
+        buffer.append("poviseni: "+ poviseni+ "\n");
+        buffer.append("visoki: "+ visoki+ "\n");
+        buffer.append("dosta visoki: "+ dostavisoki+ "\n");
+        buffer.append("hipertenzija: "+ hipertenzija+ "\n");
+        buffer.append("izolirani: " + izolirani + "\n");
+
+        povijest.append(buffer);
+        povijest.append(buffer2);
     }
+
+
 
     // region NAVIGACIJA
     @Override

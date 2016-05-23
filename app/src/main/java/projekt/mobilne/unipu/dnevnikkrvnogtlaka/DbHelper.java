@@ -29,8 +29,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     String currentDateandTime = sdf.format(new Date());
-    Calendar c = Calendar.getInstance();
-    int date = c.get(Calendar.DAY_OF_MONTH);
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -47,13 +45,13 @@ public class DbHelper extends SQLiteOpenHelper {
     public boolean insertData(String sistolicki, String dijastolicki, String puls) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,sistolicki);
-        contentValues.put(COL_3,dijastolicki);
-        contentValues.put(COL_4,puls);
+        contentValues.put(COL_2, sistolicki);
+        contentValues.put(COL_3, dijastolicki);
+        contentValues.put(COL_4, puls);
         contentValues.put(COL_5, currentDateandTime);
 
-        long result = db.insert(TABLE_NAME,null ,contentValues);
-        if(result == -1)
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        if (result == -1)
             return false;
         else
             return true;
@@ -63,13 +61,13 @@ public class DbHelper extends SQLiteOpenHelper {
     // region KURSOR
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" ORDER BY ID DESC", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " ORDER BY ID DESC", null);
         return res;
     }
 
     public Cursor getZadnjaTri() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
         return res;
     }
     // endregion
