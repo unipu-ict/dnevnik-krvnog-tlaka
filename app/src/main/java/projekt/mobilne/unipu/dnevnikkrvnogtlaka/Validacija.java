@@ -21,3 +21,4 @@ public class Validacija {
         return true;
     }
 }
+// pozdrav iz rešetara :D
