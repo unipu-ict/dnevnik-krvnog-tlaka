@@ -3,35 +3,19 @@ package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    /* TODO: nisam siguran dal mi je potreban
-    public ArrayList<String> results = new ArrayList<>();
-    */
-
     // region PRIVATNE VARIJABLE
-    // TODO: to bi ja mislim trebalo samo u PovijestActivity-ju i UnosActivity-ju
-    private static final String OPTIMALNI = "OPTIMALNI";
-    private static final String NORMALNI = "NORMALNI";
-    private static final String POVISENI = "POVISENI";
-    private static final String VISOKI = "VISOKI";
-    private static final String DOSTAVISOKI = "DOSTAVISOKI";
-    private static final String HIPERTENZIJA = "HIPERTENZIJA";
-    private static final String IZOLIRANI = "IZOLIRANI";
+    private ImageButton buttonNoviUnos;
+    private ImageButton buttonPovijest;
 
     private TextView tvZadnjaTri;
     private DbHelper myDb;
@@ -46,9 +30,29 @@ public class MainActivity extends AppCompatActivity {
         myDb = new DbHelper(this);
         tvZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
         ispisZadnjaTriUnosa();
+
+        // ImageButtoni za prelazak na sljedeću aktivnost
+        buttonNoviUnos = (ImageButton) findViewById(R.id.buttonDodajTlak);
+        buttonPovijest = (ImageButton) findViewById(R.id.buttonPovijest);
+
+        buttonNoviUnos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, UnosActivity.class);
+                startActivity(i);
+            }
+        });
+
+        buttonPovijest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i  = new Intent(MainActivity.this, PregledActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-
+    // region PRIVATNE METODE
     private void ispisZadnjaTriUnosa() {
         Cursor res = myDb.getZadnjaTri();
 
@@ -62,17 +66,7 @@ public class MainActivity extends AppCompatActivity {
         }
         tvZadnjaTri.setText("datum | sist | dijast | puls\n\n" + buffer.toString());
     }
-
-
-
-    /* TODO: to je u biti prelazak na PregledActivity, pogledati Antunov prototip
-    private void viewStanje() {
-        View v = getWindow().getDecorView().findFocus();
-        pregledKrvnogTlaka(v);
-    }
-    */
-
-
+    // endregion
 
     // region NAVIGACIJA
     @Override

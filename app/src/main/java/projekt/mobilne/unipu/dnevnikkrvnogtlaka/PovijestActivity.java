@@ -35,6 +35,7 @@ public class PovijestActivity extends AppCompatActivity {
             return;
         }
 
+        // Prvi buffer u kojeg se zapisuju ključne vrijednosti koje ćemo ispisati na screenu
         StringBuffer buffer = new StringBuffer();
 
         while (cur.moveToNext()) {
@@ -56,7 +57,7 @@ public class PovijestActivity extends AppCompatActivity {
         int hipertenzija = 0;
         int izolirani = 0;
 
-
+        // Drugi buffer u kojem brojimo koliko je kojih tipova tlaka evidentirano
         StringBuffer buffer2 = new StringBuffer();
         while (res.moveToNext()) {
             if (res.getInt(1) < 120 & res.getInt(2) < 80) {

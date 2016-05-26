@@ -10,7 +10,7 @@
         app:showAsAction="never" />
 
     <item android:id="@+id/pregled_menu"
-        android:title="Pregled"
+        android:title="Dijagnoza"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

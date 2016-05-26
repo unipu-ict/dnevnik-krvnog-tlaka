@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,14 +22,18 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "dijastolicki";
     public static final String COL_4 = "puls";
     public static final String COL_5 = "datum";
+    public static final String COl_6 = "vrijeme";
     // endregion
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    String currentDateandTime = sdf.format(new Date());
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdfDate.format(new Date());
+
+   // SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
+   // String currentTime = sdfTime.format(new Date());
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -48,7 +53,8 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(COL_2, sistolicki);
         contentValues.put(COL_3, dijastolicki);
         contentValues.put(COL_4, puls);
-        contentValues.put(COL_5, currentDateandTime);
+        contentValues.put(COL_5, currentDate);
+        //contentValues.put(COl_6, currentTime);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         if (result == -1)

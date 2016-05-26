@@ -16,16 +16,18 @@ import android.widget.Toast;
 public class UnosActivity extends AppCompatActivity {
 
     // region PRIVATNE METODE
-    private static final String OPTIMALNI = "OPTIMALNI";
-    private static final String NORMALNI = "NORMALNI";
-    private static final String POVISENI = "POVISENI";
-    private static final String VISOKI = "VISOKI";
-    private static final String DOSTAVISOKI = "DOSTAVISOKI";
-    private static final String HIPERTENZIJA = "HIPERTENZIJA";
-    private static final String IZOLIRANI = "IZOLIRANI";
     private DbHelper myDb;
 
-
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
+    private Button button9;
+    private Button button0;
     // endregion
 
     @Override
@@ -36,11 +38,95 @@ public class UnosActivity extends AppCompatActivity {
         // Instanciranje baze
         myDb = new DbHelper(this);
 
+        // Tipke za numeričku tipkovnicu
+        button1 = (Button)findViewById(R.id.button1);
+        button2 = (Button)findViewById(R.id.button2);
+        button3 = (Button)findViewById(R.id.button3);
+        button4 = (Button)findViewById(R.id.button4);
+        button5 = (Button)findViewById(R.id.button5);
+        button6 = (Button)findViewById(R.id.button6);
+        button7 = (Button)findViewById(R.id.button7);
+        button8 = (Button)findViewById(R.id.button8);
+        button9 = (Button)findViewById(R.id.button9);
+        button0 = (Button)findViewById(R.id.button0);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 1", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 2", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 3", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 4", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 5", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 6", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 7", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 8", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 9", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Pritisnuta je tipka 0", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         // kontrole za unos parametara nakon mjerenja krvnog tlaka
         final EditText etSistolicki = (EditText) findViewById(R.id.etSistolicki);
         final EditText etDijastolicki = (EditText) findViewById(R.id.etDijastolicki);
         final EditText etPuls = (EditText) findViewById(R.id.etPuls);
 
+        // Tipka za potvrdu unosa krvnog tlaka
         Button unosKrvnogTlaka = (Button)findViewById(R.id.buttonUnos);
 
         unosKrvnogTlaka.setOnClickListener(new View.OnClickListener() {
