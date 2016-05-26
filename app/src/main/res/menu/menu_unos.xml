@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="projekt.mobilne.unipu.dnevnikkrvnogtlaka.UnosActivity">
 
-    <item android:id="@+id/pocetna_menu_menu"
+    <item android:id="@+id/pocetna_menu"
         android:title="Početna stranica"
         android:orderInCategory="100"
         app:showAsAction="never" />

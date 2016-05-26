@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String HIPERTENZIJA = "HIPERTENZIJA";
     private static final String IZOLIRANI = "IZOLIRANI";
 
-    private DbHelper myDb;
     private TextView tvZadnjaTri;
+    private DbHelper myDb;
     //endregion
 
     @Override
@@ -44,73 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Instanciranje baze
         myDb = new DbHelper(this);
-
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-        final EditText etSistolicki = (EditText) findViewById(R.id.sistolicki);
-        final EditText etDijastolicki = (EditText) findViewById(R.id.dijastolicki);
-        final EditText etPuls = (EditText) findViewById(R.id.puls);
         tvZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
-
-        Button buttonDodajTlak = (Button)findViewById(R.id.buttonDodajTlak);
-        Button buttonStanje = (Button)findViewById(R.id.buttonStanje);
-        Button pov = (Button)findViewById(R.id.buttonPovijest);
-
-
-        buttonDodajTlak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!etSistolicki.getText().toString().equals("") &&
-                        !etDijastolicki.getText().toString().equals("") &&
-                        !etPuls.getText().toString().equals("")) {
-
-                    int sistolicki = Integer.parseInt(etSistolicki.getText().toString());
-                    int diastolicki = Integer.parseInt(etDijastolicki.getText().toString());
-                    int puls = Integer.parseInt(etPuls.getText().toString());
-
-                    Validacija validacija = new Validacija(getApplicationContext());
-                    if (validacija.validiraj(sistolicki, diastolicki, puls)) {
-                        dodajNoviUnos(sistolicki, diastolicki, puls);
-                        ispisZadnjaTriUnosa();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Poruka o grešci", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Prazni unosi", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        buttonStanje.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View v = getWindow().getDecorView().findFocus();
-                povijestKrvnogTlaka(v);
-            }
-        });
-
-        pov.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
         ispisZadnjaTriUnosa();
     }
 
 
-
     private void ispisZadnjaTriUnosa() {
         Cursor res = myDb.getZadnjaTri();
-
-        if(res.getCount() == 0) {
-            Toast.makeText(MainActivity.this, "Tlak je unesen!", Toast.LENGTH_LONG).show();
-
-            return;
-        }
 
         StringBuffer buffer = new StringBuffer();
 
@@ -120,36 +60,10 @@ public class MainActivity extends AppCompatActivity {
             buffer.append("" + res.getString(2) + "  ");
             buffer.append("(" + res.getString(3) + ")\n");
         }
-        Toast.makeText(MainActivity.this, "datum | sist | dijast | puls" + buffer.toString(), Toast.LENGTH_LONG).show();
+        tvZadnjaTri.setText("datum | sist | dijast | puls\n\n" + buffer.toString());
     }
 
-    private void dodajNoviUnos(int sistolicki, int dijastolicki, int puls) {
-        boolean isInserted = myDb.insertData(String.valueOf(sistolicki), String.valueOf(dijastolicki), String.valueOf(puls));
 
-        if (isInserted = true)
-            Toast.makeText(MainActivity.this, "Tlak unešen", Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(MainActivity.this, "Dalje nećeš moći", Toast.LENGTH_LONG).show();
-    }
-
-    private void ispisSvihUnosa() {
-        Cursor cur = myDb.getAllData();
-        if (cur.getCount() == 0) {
-            Toast.makeText(MainActivity.this, "Nema zapisa u bazi!", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        StringBuffer buffer = new StringBuffer();
-
-        while (cur.moveToNext()) {
-            buffer.append(cur.getString(4) + " | ");
-            buffer.append(cur.getString(1) + " | ");
-            buffer.append(cur.getString(2) + " | ");
-            buffer.append(cur.getString(3) + "\n");
-        }
-        //Toast.makeText(MainActivity.this, "Povijest unosa:\n" + buffer, Toast.LENGTH_LONG).show();
-        tvZadnjaTri.setText(buffer);
-    }
 
     /* TODO: to je u biti prelazak na PregledActivity, pogledati Antunov prototip
     private void viewStanje() {

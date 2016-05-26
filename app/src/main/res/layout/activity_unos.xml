@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center|top"
     android:id="@+id/unos_linear_layout">
 
     <TextView android:text="Unos krvnog tlaka"
@@ -13,59 +13,72 @@
         android:layout_height="wrap_content"
         android:minWidth="150dp"
         android:padding="24dp"/>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <TextView
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sistolički:"/>
+            android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="150dp"
-            android:id="@+id/etSistolicki"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistolički:"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dijastolički:"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:id="@+id/etSistolicki"
+                android:inputType="number"/>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="150dp"
-            android:id="@+id/etDijastolicki"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Puls:"/>
+        <TableRow>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="150dp"
-            android:id="@+id/etPuls"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dijastolički:"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:id="@+id/etDijastolicki"
+                android:inputType="number"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pulse"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="150dp"
+                android:id="@+id/etPuls"
+                android:inputType="number"/>
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+
+
+    <include layout="@layout/content_unos" />
+
 
     <Button
         android:layout_width="wrap_content"
@@ -74,3 +87,5 @@
         android:id="@+id/buttonUnos"/>
 
 </LinearLayout>
+
+
