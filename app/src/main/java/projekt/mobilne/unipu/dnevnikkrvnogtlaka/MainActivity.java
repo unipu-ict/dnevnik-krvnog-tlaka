@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String komentar;
+
     // region PRIVATNE VARIJABLE
     private ImageButton buttonNoviUnos;
     private ImageButton buttonPovijest;
