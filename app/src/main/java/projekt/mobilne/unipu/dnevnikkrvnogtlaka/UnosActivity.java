@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class UnosActivity extends AppCompatActivity {
 
-    // region PRIVATNE METODE
+    // region PRIVATNE VARIJABLE
     private DbHelper myDb;
 
     private Button button1;
@@ -163,9 +163,6 @@ public class UnosActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
-
-
-
     // endregion
 
     // region NAVIGACIJA

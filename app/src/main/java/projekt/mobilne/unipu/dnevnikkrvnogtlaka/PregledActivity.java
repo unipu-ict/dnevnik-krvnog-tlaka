@@ -21,15 +21,20 @@ import java.util.ArrayList;
 
 public class PregledActivity extends AppCompatActivity {
 
-    private int optimalni = 0;
-    private int normalni = 0;
-    private int poviseni = 0;
-    private int visoki = 0;
-    private int dostavisoki = 0;
-    private int hipertenzija = 0;
-    private int izolirani = 0;
+    // region PRIVATNE VARIJABLE
+    private float optimalni = 0;
+    private float normalni = 0;
+    private float poviseni = 0;
+    private float visoki = 0;
+    private float dostavisoki = 0;
+    private float hipertenzija = 0;
+    private float izolirani = 0;
+
+    private int brojac = 0;
 
     private DbHelper myDb;
+    private Cursor res;
+    // endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,60 +44,114 @@ public class PregledActivity extends AppCompatActivity {
         myDb = new DbHelper(this);
         myDb.getAllData();
 
-        Cursor res = myDb.getAllData();
+        inicijalizirajKursor();
+        inicijalizirajGraf();
+    }
+
+    // region KURSOR
+    private void inicijalizirajKursor() {
+        // Inicijalizacija kursora koji prolazi sve podatke u bazi
+        res = myDb.getAllData();
         while (res.moveToNext()) {
             if (res.getInt(1) < 120 & res.getInt(2) < 80) {
                 optimalni++;
-            }else if (res.getInt(1) < 130 & res.getInt(2) < 85) {
+                brojac++;
+            } else if (res.getInt(1) < 130 & res.getInt(2) < 85) {
                 normalni++;
-            }else if (res.getInt(1) < 139 & res.getInt(2) < 89) {
+                brojac++;
+            } else if (res.getInt(1) < 139 & res.getInt(2) < 89) {
                 poviseni++;
-            }else if (res.getInt(1) < 159 & res.getInt(2) < 99) {
+                brojac++;
+            } else if (res.getInt(1) < 159 & res.getInt(2) < 99) {
                 visoki++;
-            }else if (res.getInt(1) < 179 & res.getInt(2) < 109) {
+                brojac++;
+            } else if (res.getInt(1) < 179 & res.getInt(2) < 109) {
                 dostavisoki++;
-            }else if (res.getInt(1) < 159 & res.getInt(2) < 95) {
+                brojac++;
+            } else if (res.getInt(1) < 159 & res.getInt(2) < 95) {
                 hipertenzija++;
-            }else if (res.getInt(1) > 140 & res.getInt(2) > 90) {
+                brojac++;
+            } else if (res.getInt(1) > 140 & res.getInt(2) > 90) {
                 izolirani++;
+                brojac++;
             }
         }
+    }
+    // endregion
 
+    // region GRAF
+    private void inicijalizirajGraf() {
+        // Inicijalizacija dijagrama
         PieChart pieChart = (PieChart) findViewById(R.id.chart);
 
-        // ArrayList koji sadrži količinu pojedinih izmjerenih tlakova
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(optimalni, 0));
-        entries.add(new Entry(normalni, 1));
-        entries.add(new Entry(poviseni, 2));
-        entries.add(new Entry(visoki, 4));
-        entries.add(new Entry(dostavisoki, 5));
-        entries.add(new Entry(hipertenzija, 6));
-        entries.add(new Entry(izolirani, 7));
-
-        // TODO: 22.5.2016. Šta je ovo brate, kakav |
-        PieDataSet dataset = new PieDataSet(entries, "|");
-
+        // ArrayList koji sadrži nazive tlakova za legendu
         ArrayList<String> labels = new ArrayList<String>();
-        if(optimalni>0)
-        labels.add("Optimalni");
-        labels.add("Normalni");
-        labels.add("Povišeni");
-        labels.add("Visoki");
-        labels.add("Dosta visoki");
-        labels.add("Hipertenzija");
-        labels.add("Izolirani");
+        // ArrayList koji sadrži instance pojedinih izmjerenih tlakova
+        ArrayList<Entry> entries = new ArrayList<>();
 
+        if (optimalni > 0) {
+            optimalni = (optimalni / brojac) * 100;
+            entries.add(new Entry(optimalni, 0));
+            labels.add("Optimalni");
+        }
+
+        if (normalni > 0) {
+            normalni = (normalni / brojac) * 100;
+            entries.add(new Entry(normalni, 1));
+            labels.add("Normalni");
+        }
+
+        if (poviseni > 0) {
+            poviseni = (poviseni / brojac) * 100;
+            entries.add(new Entry(poviseni, 2));
+            labels.add("Povišeni");
+        }
+
+        if (visoki > 0) {
+            visoki = (visoki / brojac) * 100;
+            entries.add(new Entry(visoki, 3));
+            labels.add("Visoki");
+        }
+
+        if (dostavisoki > 0) {
+            dostavisoki = (dostavisoki / brojac) * 100;
+            entries.add(new Entry(dostavisoki, 4));
+            labels.add("Dosta visoki");
+        }
+
+        if (hipertenzija > 0) {
+            hipertenzija = (hipertenzija / brojac) * 100;
+            entries.add(new Entry(hipertenzija, 5));
+            labels.add("Hipertenzija");
+        }
+
+        if (izolirani > 0) {
+            izolirani = (izolirani / brojac) * 100;
+            entries.add(new Entry(izolirani, 6));
+            labels.add("Izolirani");
+        }
+
+        // Unos prikupljenih podataka u PieDataSet
+        PieDataSet dataset = new PieDataSet(entries, "");
+
+        // Skup labela i vrijednosti za PieChart
         PieData data = new PieData(labels, dataset);
-        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
-        pieChart.setDescription("Description");
+
+        // Postavljanje seta boja za PieChart
+        dataset.setColors(ColorTemplate.JOYFUL_COLORS);
+
+        // Dodavanje naziva legende
+        pieChart.setDescription("Legenda");
         pieChart.setData(data);
 
-        pieChart.animateY(5000);
+        // Postavljanje teksta u sredinu PieCharta
+        pieChart.setCenterText("Prosjek krvnog tlaka (%)");
+        //pieChart.setHoleRadius(20);
 
-        pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
+        // Brža animacija PieCharta
+        pieChart.animateX(1000);
     }
-
+    // endregion
 
     // region NAVIGACIJA
     @Override

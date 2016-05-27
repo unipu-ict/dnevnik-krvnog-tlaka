@@ -15,16 +15,26 @@ import android.widget.Toast;
 
 public class PovijestActivity extends AppCompatActivity {
 
+    // region PRIVATNE VARIJABLE
     private DbHelper myDb;
     private TextView povijest;
+    // endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_povijest);
 
-        povijest = (TextView) findViewById(R.id.tbPovijest);
-        povijest.setText("Povijest unosa:\n");
+        LstFragment lstFragment = (LstFragment) getSupportFragmentManager().findFragmentByTag("lstfragment");
+        if (lstFragment == null) {
+            lstFragment = new LstFragment();
+            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(android.R.id.content, lstFragment, "lstfragment");
+            transaction.commit();
+        }
+
+        //povijest = (TextView) findViewById(R.id.tbPovijest);
+        //povijest.setText("Povijest unosa:\n");
 
         myDb = new DbHelper(this);
         myDb.getAllData();
@@ -84,11 +94,9 @@ public class PovijestActivity extends AppCompatActivity {
         buffer.append("hipertenzija: "+ hipertenzija+ "\n");
         buffer.append("izolirani: " + izolirani + "\n");
 
-        povijest.append(buffer);
-        povijest.append(buffer2);
+        //povijest.append(buffer);
+        //povijest.append(buffer2);
     }
-
-
 
     // region NAVIGACIJA
     @Override
