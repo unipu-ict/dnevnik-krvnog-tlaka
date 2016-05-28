@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.SimpleTimeZone;
+import java.util.TimeZone;
 
 
 public class DbHelper extends SQLiteOpenHelper {
@@ -30,7 +31,7 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy ");
     String currentDate = sdfDate.format(new Date());
 
    // SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
@@ -74,9 +75,30 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public Cursor getZadnjaTri() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 2", null);
         return res;
     }
+
+    public Cursor getZadnji() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 1", null);
+        return res;
+    }
+
     // endregion
+
+    public String getDatumIVrijeme(long timestamp) {
+        try{
+            Calendar calendar = Calendar.getInstance();
+            TimeZone tz = TimeZone.getDefault();
+            calendar.setTimeInMillis(timestamp * 1000);
+            calendar.add(Calendar.MILLISECOND, tz.getOffset(calendar.getTimeInMillis()));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date currenTimeZone = (Date) calendar.getTime();
+            return sdf.format(currenTimeZone);
+        }catch (Exception e) {
+        }
+        return "";
+    }
 
 }
