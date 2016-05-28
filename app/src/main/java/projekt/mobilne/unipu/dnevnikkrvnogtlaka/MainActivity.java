@@ -13,11 +13,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String komentar;
+
     // region PRIVATNE VARIJABLE
     private ImageButton buttonNoviUnos;
     private ImageButton buttonPovijest;
 
     private TextView tvZadnjaTri;
+    private TextView tvSistolicki;
+    private TextView tvDijastolicki;
+    private TextView tvPuls;
     private DbHelper myDb;
     //endregion
 
@@ -26,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tvSistolicki = (TextView)findViewById(R.id.tvSistolicki);
+        tvDijastolicki = (TextView)findViewById(R.id.tvDijastolicki);
+        tvPuls = (TextView)findViewById(R.id.tvPuls);
+
         // Instanciranje baze
         myDb = new DbHelper(this);
+        getZadnji();
         tvZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
         ispisZadnjaTriUnosa();
 
@@ -66,6 +76,24 @@ public class MainActivity extends AppCompatActivity {
         }
         tvZadnjaTri.setText("datum | sist | dijast | puls\n\n" + buffer.toString());
     }
+
+    private void getZadnji() {
+        Cursor res = myDb.getZadnji();
+
+        String sist = "";
+        String dist = "";
+        String puls = "";
+
+        while (res.moveToNext()) {
+            sist = "" + res.getString(1);
+            dist = "" + res.getString(2);
+            puls = "" + res.getString(3);
+        }
+        tvSistolicki.setText(sist);
+        tvDijastolicki.setText(dist);
+        tvPuls.setText(puls);
+    }
+
     // endregion
 
     // region NAVIGACIJA

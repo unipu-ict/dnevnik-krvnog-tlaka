@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button
@@ -29,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="2"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button
@@ -37,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="3"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
         </LinearLayout>
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="4"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button
@@ -62,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:text="5"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button
@@ -70,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="6"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
 
@@ -89,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:text="7"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button
@@ -97,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="8"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button
@@ -105,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:text="9"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
 
@@ -133,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textStyle="bold"
+                android:onClick="onClickNumberButton"
                 android:textSize="10dp" />
 
             <Button

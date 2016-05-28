@@ -8,13 +8,6 @@
     android:gravity="center|top"
     android:id="@+id/unos_linear_layout">
 
-    <TextView android:text="Unos krvnog tlaka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="150dp"
-        android:padding="24dp"/>
-
-
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -27,7 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sistolički:"/>
+                android:text="SYS:"/>
 
 
             <EditText
@@ -44,7 +37,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dijastolički:"/>
+                android:text="DYA:"/>
 
             <EditText
                 android:layout_width="wrap_content"
