@@ -15,11 +15,10 @@ public class Validacija {
 
     public boolean validiraj(int sistolicki, int diastolicki, int puls) {
 
+        //TODO: složiti validaciju korisničkog unosa!
         // ukoliko dođe do pogreške
-        Toast.makeText(context, "Validacija u tijeku!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Validacija u tijeku!", Toast.LENGTH_SHORT).show();
 
         return true;
     }
 }
-// pozdrav iz rešetara :D
-// đes mala šta ima :D

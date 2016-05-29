@@ -59,7 +59,8 @@ public class LstFragment extends ListFragment {
         // Primjer dinamičnog dohvata texta labele
         // TextView txt = (TextView) viewGroup.findViewById(R.id.txtitem);
         StringBuilder poruka = new StringBuilder("Odabrali ste unos br. ");
-        Toast.makeText(getActivity(), poruka.append(position+1), Toast.LENGTH_LONG).show();
+        // TODO: 29.05. P-3
+        // Toast.makeText(getActivity(), poruka.append(position+1), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
     }

@@ -78,7 +78,7 @@ public class UnosActivity extends AppCompatActivity {
                         dodajNoviUnos(sistolicki, diastolicki, puls);
                         View v = getWindow().getDecorView().findFocus();
                         Toast.makeText(getApplicationContext(), "Tlak je uspješno unesen", Toast.LENGTH_SHORT).show();
-                        pregledKrvnogTlaka(v);
+                        pocetnaStranica(v);
                     } else {
                         Toast.makeText(getApplicationContext(), "Došlo je do pogreške", Toast.LENGTH_SHORT).show();
                     }

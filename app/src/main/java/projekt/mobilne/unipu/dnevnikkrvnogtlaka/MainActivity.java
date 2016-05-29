@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvSistolicki;
     private TextView tvDijastolicki;
     private TextView tvPuls;
+    private TextView tvZadnjeMjerenje;
     private DbHelper myDb;
     //endregion
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         tvSistolicki = (TextView)findViewById(R.id.tvSistolicki);
         tvDijastolicki = (TextView)findViewById(R.id.tvDijastolicki);
         tvPuls = (TextView)findViewById(R.id.tvPuls);
+        tvZadnjeMjerenje = (TextView) findViewById(R.id.tvZadnjeMjerenje);
 
         // Instanciranje baze
         myDb = new DbHelper(this);
@@ -91,12 +93,12 @@ public class MainActivity extends AppCompatActivity {
             sist = "" + res.getString(1);
             dist = "" + res.getString(2);
             puls = "" + res.getString(3);
+            tvZadnjeMjerenje.append(" " + res.getString(4) + ")");
         }
         tvSistolicki.setText(sist);
         tvDijastolicki.setText(dist);
         tvPuls.setText(puls);
     }
-
     // endregion
 
     // region NAVIGACIJA

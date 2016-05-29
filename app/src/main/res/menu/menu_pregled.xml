@@ -5,7 +5,7 @@
     tools:context="projekt.mobilne.unipu.dnevnikkrvnogtlaka.PregledActivity">
 
     <item android:id="@+id/pocetna_menu"
-        android:title="Početna stranica"
+        android:title="Moj dnevnik"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

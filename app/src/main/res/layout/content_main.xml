@@ -22,11 +22,13 @@
         android:layout_margin="0dp"
         android:background="@color/colorUnos">
 
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
-            android:text="Zadnje mjerenje: (dan / mjesec / HH:mm)"
+            android:text="Zadnje mjerenje: ("
             android:id="@+id/tvZadnjeMjerenje"/>
 
         <TableLayout
@@ -89,7 +91,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:id="@+id/buttonDodajTlak"
-            android:layout_gravity="top|end" />
+            android:layout_gravity="top|end"
+            android:src="@drawable/add"
+            android:background="@color/colorUnos" />
 
 
 
@@ -118,7 +122,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:id="@+id/buttonPovijest"
-            android:layout_gravity="top|end" />
+            android:layout_gravity="top|end"
+            android:src="@drawable/doctor"
+            android:background="@color/colorBackground" />
 
     </LinearLayout>
 

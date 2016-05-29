@@ -31,7 +31,7 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy ");
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
     String currentDate = sdfDate.format(new Date());
 
    // SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
@@ -56,6 +56,7 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3, dijastolicki);
         contentValues.put(COL_4, puls);
         contentValues.put(COL_5, currentDate);
+        // TODO: dogovoriti se oko datuma (i vremena)
         //contentValues.put(COl_6, currentTime);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
@@ -75,7 +76,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public Cursor getZadnjaTri() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 2", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
         return res;
     }
 
@@ -85,6 +86,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getZadnjiDatum() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select datum from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 1", null);
+        return res;
+    }
     // endregion
 
     public String getDatumIVrijeme(long timestamp) {
