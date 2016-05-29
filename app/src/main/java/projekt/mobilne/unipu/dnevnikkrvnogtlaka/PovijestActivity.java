@@ -25,6 +25,9 @@ public class PovijestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_povijest);
 
+        // Programski postavljen naziv screena
+        this.setTitle("Povijest");
+
         LstFragment lstFragment = (LstFragment) getSupportFragmentManager().findFragmentByTag("lstfragment");
         if (lstFragment == null) {
             lstFragment = new LstFragment();

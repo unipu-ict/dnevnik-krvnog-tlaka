@@ -36,6 +36,7 @@ public class UnosActivity extends AppCompatActivity {
         etDijastolicki.setInputType(InputType.TYPE_NULL);
         etPuls.setInputType(InputType.TYPE_NULL);
 
+        // Programski postavljen naziv screena
         this.setTitle("Unos krvnog tlaka");
 
         // Instanciranje baze

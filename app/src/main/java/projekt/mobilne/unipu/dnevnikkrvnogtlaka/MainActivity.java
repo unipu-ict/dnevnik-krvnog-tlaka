@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Programski postavljen naziv screena
+        this.setTitle("Krvni tlak");
+
         tvSistolicki = (TextView)findViewById(R.id.tvSistolicki);
         tvDijastolicki = (TextView)findViewById(R.id.tvDijastolicki);
         tvPuls = (TextView)findViewById(R.id.tvPuls);

@@ -41,8 +41,12 @@ public class PregledActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregled);
 
+        // Programski postavljen naziv screena
+        this.setTitle("Dijagnoza");
+
         myDb = new DbHelper(this);
         myDb.getAllData();
+
 
         inicijalizirajKursor();
         inicijalizirajGraf();
