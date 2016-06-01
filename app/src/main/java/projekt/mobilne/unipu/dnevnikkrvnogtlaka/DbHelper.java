@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 
 public class DbHelper extends SQLiteOpenHelper {
@@ -21,16 +22,18 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "dijastolicki";
     public static final String COL_4 = "puls";
     public static final String COL_5 = "datum";
+    public static final String COl_6 = "vrijeme";
     // endregion
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    String currentDateandTime = sdf.format(new Date());
-    Calendar c = Calendar.getInstance();
-    int date = c.get(Calendar.DAY_OF_MONTH);
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+    String currentDate = sdfDate.format(new Date());
+
+   // SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
+   // String currentTime = sdfTime.format(new Date());
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -47,13 +50,15 @@ public class DbHelper extends SQLiteOpenHelper {
     public boolean insertData(String sistolicki, String dijastolicki, String puls) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,sistolicki);
-        contentValues.put(COL_3,dijastolicki);
-        contentValues.put(COL_4,puls);
-        contentValues.put(COL_5, currentDateandTime);
+        contentValues.put(COL_2, sistolicki);
+        contentValues.put(COL_3, dijastolicki);
+        contentValues.put(COL_4, puls);
+        contentValues.put(COL_5, currentDate);
+        // TODO: dogovoriti se oko datuma (i vremena)
+        //contentValues.put(COl_6, currentTime);
 
-        long result = db.insert(TABLE_NAME,null ,contentValues);
-        if(result == -1)
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        if (result == -1)
             return false;
         else
             return true;
@@ -63,15 +68,41 @@ public class DbHelper extends SQLiteOpenHelper {
     // region KURSOR
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" ORDER BY ID DESC", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " ORDER BY ID DESC", null);
         return res;
     }
 
     public Cursor getZadnjaTri() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
+        return res;
+    }
+
+    public Cursor getZadnji() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 1", null);
+        return res;
+    }
+
+    public Cursor getZadnjiDatum() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select datum from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 1", null);
         return res;
     }
     // endregion
+
+    public String getDatumIVrijeme(long timestamp) {
+        try{
+            Calendar calendar = Calendar.getInstance();
+            TimeZone tz = TimeZone.getDefault();
+            calendar.setTimeInMillis(timestamp * 1000);
+            calendar.add(Calendar.MILLISECOND, tz.getOffset(calendar.getTimeInMillis()));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            Date currenTimeZone = (Date) calendar.getTime();
+            return sdf.format(currenTimeZone);
+        }catch (Exception e) {
+        }
+        return "";
+    }
 
 }

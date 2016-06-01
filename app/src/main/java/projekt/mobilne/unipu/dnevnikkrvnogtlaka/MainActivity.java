@@ -3,38 +3,28 @@ package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    /* TODO: nisam siguran dal mi je potreban
-    public ArrayList<String> results = new ArrayList<>();
-    */
+    private String komentar;
 
     // region PRIVATNE VARIJABLE
-    // TODO: to bi ja mislim trebalo samo u PovijestActivity-ju
-    private static final String OPTIMALNI = "OPTIMALNI";
-    private static final String NORMALNI = "NORMALNI";
-    private static final String POVISENI = "POVISENI";
-    private static final String VISOKI = "VISOKI";
-    private static final String DOSTAVISOKI = "DOSTAVISOKI";
-    private static final String HIPERTENZIJA = "HIPERTENZIJA";
-    private static final String IZOLIRANI = "IZOLIRANI";
+    private ImageButton buttonNoviUnos;
+    private ImageButton buttonPovijest;
 
+    private TextView tvZadnjaTri;
+    private TextView tvSistolicki;
+    private TextView tvDijastolicki;
+    private TextView tvPuls;
+    private TextView tvZadnjeMjerenje;
     private DbHelper myDb;
-    private TextView etZadnjaTri;
     //endregion
 
     @Override
@@ -42,41 +32,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Programski postavljen naziv screena
+        this.setTitle("Krvni tlak");
+
+        tvSistolicki = (TextView)findViewById(R.id.tvSistolicki);
+        tvDijastolicki = (TextView)findViewById(R.id.tvDijastolicki);
+        tvPuls = (TextView)findViewById(R.id.tvPuls);
+        tvZadnjeMjerenje = (TextView) findViewById(R.id.tvZadnjeMjerenje);
+
         // Instanciranje baze
         myDb = new DbHelper(this);
-
-        /* TODO: nisam siguran kaj je to
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        */
-
-
-        /* TODO: nisam siguran koja je koja tipka
-        final EditText etSistolicki = (EditText) findViewById(R.id.etSistolicki);
-        final EditText etDijastolicki = (EditText) findViewById(R.id.etDijastolicki);
-        final EditText etPuls = (EditText) findViewById(R.id.etPuls);
-        etZadnjaTri = (EditText) findViewById(R.id.etZadnjaTri);
-
-        Button buttonDodajTlak = (Button)findViewById(R.id.buttonDodajTlak);
-        Button buttonPovijest = (Button)findViewById(R.id.buttonPovijest);
-        Button buttonStanje = (Button)findViewById(R.id.buttonStanje);
-        */
-
-        // TODO: implementirati onClick metode na sve tri tipke
-
-
-
+        getZadnji();
+        tvZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
         ispisZadnjaTriUnosa();
+
+        // ImageButtoni za prelazak na sljedeću aktivnost
+        buttonNoviUnos = (ImageButton) findViewById(R.id.buttonDodajTlak);
+        buttonPovijest = (ImageButton) findViewById(R.id.buttonPovijest);
+
+        buttonNoviUnos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, UnosActivity.class);
+                startActivity(i);
+            }
+        });
+
+        buttonPovijest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i  = new Intent(MainActivity.this, PregledActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
+    // region PRIVATNE METODE
     private void ispisZadnjaTriUnosa() {
         Cursor res = myDb.getZadnjaTri();
-
-        if(res.getCount() == 0) {
-            Toast.makeText(MainActivity.this, "Tlak je unesen!", Toast.LENGTH_LONG).show();
-
-            return;
-        }
 
         StringBuffer buffer = new StringBuffer();
 
@@ -86,46 +79,27 @@ public class MainActivity extends AppCompatActivity {
             buffer.append("" + res.getString(2) + "  ");
             buffer.append("(" + res.getString(3) + ")\n");
         }
-        Toast.makeText(MainActivity.this, "datum | sist | dijast | puls" + buffer.toString(), Toast.LENGTH_LONG).show();
+        tvZadnjaTri.setText("datum | sist | dijast | puls\n\n" + buffer.toString());
     }
 
-    private void dodajNoviUnos(int sistolicki, int dijastolicki, int puls) {
-        /* TODO: varijable moraju biti tipa string prilikom unosa u bazu
-        boolean isInserted = myDb.insertData(sistolicki, dijastolicki, puls);
+    private void getZadnji() {
+        Cursor res = myDb.getZadnji();
 
-        if (isInserted = true)
-            Toast.makeText(MainActivity.this, "Tlak unešen", Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(MainActivity.this, "Dalje nećeš moći", Toast.LENGTH_LONG).show();
-        */
-    }
+        String sist = "";
+        String dist = "";
+        String puls = "";
 
-    private void ispisSvihUnosa() {
-        Cursor cur = myDb.getAllData();
-        if (cur.getCount() == 0) {
-            Toast.makeText(MainActivity.this, "Nema zapisa u bazi!", Toast.LENGTH_LONG).show();
-            return;
+        while (res.moveToNext()) {
+            sist = "" + res.getString(1);
+            dist = "" + res.getString(2);
+            puls = "" + res.getString(3);
+            tvZadnjeMjerenje.append(" " + res.getString(4) + ")");
         }
-
-        StringBuffer buffer = new StringBuffer();
-
-        while (cur.moveToNext()) {
-            buffer.append(cur.getString(4) + " | ");
-            buffer.append(cur.getString(1) + " | ");
-            buffer.append(cur.getString(2) + " | ");
-            buffer.append(cur.getString(3) + "\n");
-        }
-        Toast.makeText(MainActivity.this, "Povijest unosa:\n" + buffer, Toast.LENGTH_LONG).show();
+        tvSistolicki.setText(sist);
+        tvDijastolicki.setText(dist);
+        tvPuls.setText(puls);
     }
-
-    /* TODO: to je u biti prelazak na PregledActivity, pogledati Antunov prototip
-    private void viewStanje() {
-        View v = getWindow().getDecorView().findFocus();
-        pregledKrvnogTlaka(v);
-    }
-    */
-
-
+    // endregion
 
     // region NAVIGACIJA
     @Override

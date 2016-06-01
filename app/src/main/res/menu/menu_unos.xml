@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="projekt.mobilne.unipu.dnevnikkrvnogtlaka.UnosActivity">
 
-    <item android:id="@+id/pocetna_menu_menu"
-        android:title="Početna stranica"
+    <item android:id="@+id/pocetna_menu"
+        android:title="Moj dnevnik"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
     <item android:id="@+id/pregled_menu"
-        android:title="Pregled"
+        android:title="Dijagnoza"
         android:orderInCategory="100"
         app:showAsAction="never" />
 

@@ -8,10 +8,10 @@
     android:gravity="center"
     android:id="@+id/povijest_linear_layout">
 
-    <TextView android:text="Povijest krvnog tlaka"
+    <TextView android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"/>
+        android:padding="24dp"
+        android:id="@+id/tbPovijest"/>
 
 </LinearLayout>
-

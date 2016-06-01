@@ -5,12 +5,7 @@
     tools:context="projekt.mobilne.unipu.dnevnikkrvnogtlaka.PovijestActivity">
 
     <item android:id="@+id/pocetna_menu"
-        android:title="Početna stranica"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/pregled_menu"
-        android:title="Pregled"
+        android:title="Moj dnevnik"
         android:orderInCategory="100"
         app:showAsAction="never" />
 
@@ -19,5 +14,9 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
+    <item android:id="@+id/pregled_menu"
+        android:title="Dijagnoza"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 
 </menu>
