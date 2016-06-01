@@ -16,11 +16,11 @@ public class UnosActivity extends AppCompatActivity {
 
     // region PRIVATNE VARIJABLE
     private DbHelper myDb;
-    // endregion
-
+    private boolean val = false;
     private EditText etSistolicki;
     private EditText etDijastolicki;
     private EditText etPuls;
+    // endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,22 @@ public class UnosActivity extends AppCompatActivity {
         buttonBrisanje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (etSistolicki.isFocused()) {
-                    etSistolicki.setText(etSistolicki.getText().toString().substring(0, etSistolicki.length()-1));
+                    if(etSistolicki.length() > 0 )
+                        etSistolicki.setText(etSistolicki.getText().toString().substring(0, etSistolicki.length()-1));
                 } else if (etDijastolicki.isFocused()) {
-                    etDijastolicki.setText(etDijastolicki.getText().toString().substring(0, etDijastolicki.length()-1));
+                    if(etDijastolicki.length() > 0 ) {
+                        etDijastolicki.setText(etDijastolicki.getText().toString().substring(0, etDijastolicki.length() - 1));
+                        if (etDijastolicki.length() == 0)
+                            etSistolicki.requestFocus();
+                    }
                 } else if (etPuls.isFocused()) {
-                    etPuls.setText(etPuls.getText().toString().substring(0, etPuls.length()-1));
+                    if(etPuls.length() > 0 ) {
+                        etPuls.setText(etPuls.getText().toString().substring(0, etPuls.length() - 1));
+                        if(etPuls.length() == 0)
+                            etDijastolicki.requestFocus();
+                    }
                 }
             }
         });
@@ -72,20 +82,25 @@ public class UnosActivity extends AppCompatActivity {
                     int puls = Integer.parseInt(etPuls.getText().toString());
 
                     Validacija validacija = new Validacija(getApplicationContext());
-                    if (validacija.validiraj(sistolicki, diastolicki, puls)) {
+                    val = validacija.validiraj(sistolicki, diastolicki, puls);
+                    if (val) {
+                        /* TODO: vrijeme
                         Long vrijeme = System.currentTimeMillis()/1000;
                         String temp = myDb.getDatumIVrijeme(vrijeme);
+                        */
                         dodajNoviUnos(sistolicki, diastolicki, puls);
                         View v = getWindow().getDecorView().findFocus();
                         Toast.makeText(getApplicationContext(), "Tlak je uspješno unesen", Toast.LENGTH_SHORT).show();
                         pocetnaStranica(v);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Došlo je do pogreške", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Morate popuniti sva polja za unos!", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getApplicationContext(), "Došlo je do pogreške", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Morate popuniti sva polja!", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
     }
 
@@ -93,8 +108,12 @@ public class UnosActivity extends AppCompatActivity {
         CharSequence broj = ((Button)v).getText();
         if (etSistolicki.isFocused()) {
             etSistolicki.append(broj);
+            if (etSistolicki.length() == 3)
+                etDijastolicki.requestFocus();
         } else if (etDijastolicki.isFocused()) {
             etDijastolicki.append(broj);
+            if (etDijastolicki.length() == 3)
+                etPuls.requestFocus();
         } else if (etPuls.isFocused()) {
             etPuls.append(broj);
         }

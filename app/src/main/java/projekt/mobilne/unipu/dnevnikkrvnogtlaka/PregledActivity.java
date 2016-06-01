@@ -2,10 +2,8 @@ package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -154,6 +152,7 @@ public class PregledActivity extends AppCompatActivity {
 
         // Brža animacija PieCharta
         pieChart.animateX(1000);
+
     }
     // endregion
 
