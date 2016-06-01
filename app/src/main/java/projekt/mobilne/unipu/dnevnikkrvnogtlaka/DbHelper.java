@@ -22,14 +22,14 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "dijastolicki";
     public static final String COL_4 = "puls";
     public static final String COL_5 = "datum";
-    public static final String COl_6 = "vrijeme";
+    //public static final String COl_6 = "vrijeme";
     // endregion
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd. MMMM. yyyy HH:mm");
     String currentDate = sdfDate.format(new Date());
 
    // SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
@@ -54,7 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3, dijastolicki);
         contentValues.put(COL_4, puls);
         contentValues.put(COL_5, currentDate);
-        // TODO: dogovoriti se oko datuma (i vremena)
+        // Ipak se nisam odlucio za long datum
         //contentValues.put(COl_6, currentTime);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
