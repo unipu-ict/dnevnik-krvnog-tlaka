@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -78,6 +79,7 @@ public class PregledActivity extends AppCompatActivity {
                 brojac++;
             }
         }
+        res.close();
     }
     // endregion
 
@@ -143,7 +145,7 @@ public class PregledActivity extends AppCompatActivity {
         dataset.setColors(ColorTemplate.JOYFUL_COLORS);
 
         // Dodavanje naziva legende
-        pieChart.setDescription("Legenda");
+        //pieChart.setDescription("Legenda");
         pieChart.setData(data);
 
         // Postavljanje teksta u sredinu PieCharta

@@ -43,6 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     // region JAVNE METODE
+    // Unos novog zapisa u bazu podataka
     public boolean insertData(String sistolicki, String dijastolicki, String puls) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

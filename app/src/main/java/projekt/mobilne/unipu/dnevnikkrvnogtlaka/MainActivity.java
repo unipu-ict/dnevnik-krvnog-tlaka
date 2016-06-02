@@ -1,13 +1,18 @@
 package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,11 +82,31 @@ public class MainActivity extends AppCompatActivity {
         buttonNoviUnos = (ImageButton) findViewById(R.id.buttonDodajTlak);
         buttonPovijest = (ImageButton) findViewById(R.id.buttonPovijest);
 
+
         buttonNoviUnos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, UnosActivity.class);
                 startActivity(i);
+            }
+        });
+
+        buttonNoviUnos.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        buttonNoviUnos.setColorFilter(Color.argb(255, 255, 255, 255)); // White Tint
+                        Intent i = new Intent(MainActivity.this, UnosActivity.class);
+                        startActivity(i);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        buttonNoviUnos.clearColorFilter(); // White Tint
+                        return true;
+                }
+
+                return false;
             }
         });
 
@@ -92,6 +117,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        buttonPovijest.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        buttonPovijest.setColorFilter(Color.argb(255, 255, 255, 255)); // White Tint
+                        Intent i  = new Intent(MainActivity.this, PregledActivity.class);
+                        startActivity(i);
+                        return true; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        buttonPovijest.clearColorFilter(); // White Tint
+                        return true; // if you want to handle the touch event
+                }
+
+                return false;
+            }
+        });
     }
 
     // region PRIVATNE METODE
@@ -100,31 +143,27 @@ public class MainActivity extends AppCompatActivity {
 
         int br = 0;
         while (res.moveToNext()) {
-
-
-//
-//            // datum, vrijeme, vrijednost
-//            tvDatum1.setText(myDatum);
-//            tvVrijeme1.setText(mySat);
-//            tvVrijednost1.setText(res.getString(3));
-
+            // Prvi redak tablice
             br++;
             if (br == 1) {
                 tvDatum1.setText(res.getString(4));
                 tvVrijeme1.setText(res.getString(1) + "/" + res.getString(2));
                 tvVrijednost1.setText(res.getString(3));
             }
+            // Drugi redak tablice
             else if (br == 2) {
                 tvDatum2.setText(res.getString(4));
                 tvVrijeme2.setText(res.getString(1) + "/" + res.getString(2));
                 tvVrijednost2.setText(res.getString(3));
             }
+            // Treći redak tablice
             else {
                 tvDatum3.setText(res.getString(4));
                 tvVrijeme3.setText(res.getString(1) + "/" + res.getString(2));
                 tvVrijednost3.setText(res.getString(3));
             }
         }
+        res.close();
     }
 
     private void getZadnji() {
@@ -140,6 +179,8 @@ public class MainActivity extends AppCompatActivity {
             puls = "" + res.getString(3);
             tvZadnjeMjerenje.append(" " + res.getString(4) + " )");
         }
+        res.close();
+
         tvSistolicki.setText(sist);
         tvDijastolicki.setText(dist);
         tvPuls.setText(puls);
