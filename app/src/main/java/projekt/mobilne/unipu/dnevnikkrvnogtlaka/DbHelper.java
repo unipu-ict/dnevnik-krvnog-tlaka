@@ -22,18 +22,14 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "dijastolicki";
     public static final String COL_4 = "puls";
     public static final String COL_5 = "datum";
-    //public static final String COl_6 = "vrijeme";
     // endregion
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
-    SimpleDateFormat sdfDate = new SimpleDateFormat("dd. MMMM. yyyy HH:mm");
+    SimpleDateFormat sdfDate = new SimpleDateFormat("dd. MMMM, HH:mm");
     String currentDate = sdfDate.format(new Date());
-
-   // SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
-   // String currentTime = sdfTime.format(new Date());
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -54,8 +50,6 @@ public class DbHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3, dijastolicki);
         contentValues.put(COL_4, puls);
         contentValues.put(COL_5, currentDate);
-        // Ipak se nisam odlucio za long datum
-        //contentValues.put(COl_6, currentTime);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         if (result == -1)
@@ -90,19 +84,5 @@ public class DbHelper extends SQLiteOpenHelper {
         return res;
     }
     // endregion
-
-    public String getDatumIVrijeme(long timestamp) {
-        try{
-            Calendar calendar = Calendar.getInstance();
-            TimeZone tz = TimeZone.getDefault();
-            calendar.setTimeInMillis(timestamp * 1000);
-            calendar.add(Calendar.MILLISECOND, tz.getOffset(calendar.getTimeInMillis()));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-            Date currenTimeZone = (Date) calendar.getTime();
-            return sdf.format(currenTimeZone);
-        }catch (Exception e) {
-        }
-        return "";
-    }
 
 }

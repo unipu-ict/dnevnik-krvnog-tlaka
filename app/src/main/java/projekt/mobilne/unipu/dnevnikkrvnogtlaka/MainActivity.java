@@ -9,6 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,12 +24,23 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton buttonNoviUnos;
     private ImageButton buttonPovijest;
 
-    private TextView tvZadnjaTri;
     private TextView tvSistolicki;
     private TextView tvDijastolicki;
     private TextView tvPuls;
     private TextView tvZadnjeMjerenje;
     private DbHelper myDb;
+
+
+    // datum, vrijeme, vrijednost
+    private TextView tvDatum1;
+    private TextView tvDatum2;
+    private TextView tvDatum3;
+    private TextView tvVrijeme1;
+    private TextView tvVrijeme2;
+    private TextView tvVrijeme3;
+    private TextView tvVrijednost1;
+    private TextView tvVrijednost2;
+    private TextView tvVrijednost3;
     //endregion
 
     @Override
@@ -40,10 +56,21 @@ public class MainActivity extends AppCompatActivity {
         tvPuls = (TextView)findViewById(R.id.tvPuls);
         tvZadnjeMjerenje = (TextView) findViewById(R.id.tvZadnjeMjerenje);
 
+        tvDatum1 = (TextView) findViewById(R.id.tvTableA1);
+        tvDatum2 = (TextView) findViewById(R.id.tvTableB1);
+        tvDatum3 = (TextView) findViewById(R.id.tvTableC1);
+
+        tvVrijeme1 = (TextView) findViewById(R.id.tvTableA2);
+        tvVrijeme2 = (TextView) findViewById(R.id.tvTableB2);
+        tvVrijeme3 = (TextView) findViewById(R.id.tvTableC2);
+
+        tvVrijednost1 = (TextView) findViewById(R.id.tvTableA3);
+        tvVrijednost2 = (TextView) findViewById(R.id.tvTableB3);
+        tvVrijednost3 = (TextView) findViewById(R.id.tvTableC3);
+
         // Instanciranje baze
         myDb = new DbHelper(this);
         getZadnji();
-        tvZadnjaTri = (TextView) findViewById(R.id.zadnja_tri_textView);
         ispisZadnjaTriUnosa();
 
         // ImageButtoni za prelazak na sljedeću aktivnost
@@ -71,15 +98,33 @@ public class MainActivity extends AppCompatActivity {
     private void ispisZadnjaTriUnosa() {
         Cursor res = myDb.getZadnjaTri();
 
-        StringBuffer buffer = new StringBuffer();
-
+        int br = 0;
         while (res.moveToNext()) {
-            buffer.append("" + res.getString(4) + "  *  ");
-            buffer.append("" + res.getString(1) + "/");
-            buffer.append("" + res.getString(2) + "  ");
-            buffer.append("(" + res.getString(3) + ")\n");
+
+
+//
+//            // datum, vrijeme, vrijednost
+//            tvDatum1.setText(myDatum);
+//            tvVrijeme1.setText(mySat);
+//            tvVrijednost1.setText(res.getString(3));
+
+            br++;
+            if (br == 1) {
+                tvDatum1.setText(res.getString(4));
+                tvVrijeme1.setText(res.getString(1) + "/" + res.getString(2));
+                tvVrijednost1.setText(res.getString(3));
+            }
+            else if (br == 2) {
+                tvDatum2.setText(res.getString(4));
+                tvVrijeme2.setText(res.getString(1) + "/" + res.getString(2));
+                tvVrijednost2.setText(res.getString(3));
+            }
+            else {
+                tvDatum3.setText(res.getString(4));
+                tvVrijeme3.setText(res.getString(1) + "/" + res.getString(2));
+                tvVrijednost3.setText(res.getString(3));
+            }
         }
-        tvZadnjaTri.setText("datum | sist | dijast | puls\n\n" + buffer.toString());
     }
 
     private void getZadnji() {
@@ -93,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             sist = "" + res.getString(1);
             dist = "" + res.getString(2);
             puls = "" + res.getString(3);
-            tvZadnjeMjerenje.append(" " + res.getString(4) + ")");
+            tvZadnjeMjerenje.append(" " + res.getString(4) + " )");
         }
         tvSistolicki.setText(sist);
         tvDijastolicki.setText(dist);

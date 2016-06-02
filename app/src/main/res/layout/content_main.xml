@@ -44,12 +44,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="75dp"
                     android:text="Sistolički:"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(vrijednost)"
+                    android:gravity="center"
                     android:id="@+id/tvSistolicki"/>
 
             </TableRow>
@@ -59,12 +61,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dijastolički:"/>
+                    android:text="Dijastolički:"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(vrijednost)"
+                    android:gravity="center"
                     android:id="@+id/tvDijastolicki"/>
 
             </TableRow>
@@ -80,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(vrijednost)"
+                    android:gravity="center"
                     android:id="@+id/tvPuls"/>
 
             </TableRow>
@@ -93,7 +98,8 @@
             android:id="@+id/buttonDodajTlak"
             android:layout_gravity="top|end"
             android:src="@drawable/add"
-            android:background="@color/colorUnos" />
+            android:background="@color/colorUnos"
+            />
 
 
 
@@ -108,13 +114,130 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
 
-        <TextView
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top|center"
-            android:paddingTop="20dp"
-            android:text="povijest"
-            android:id="@+id/zadnja_tri_textView" />
+            android:layout_height="match_parent"
+            android:stretchColumns="1"
+            android:paddingTop="16dp">
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:text="Vrijeme"
+                    android:padding="3dip"
+                    android:minWidth="65pt"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:text="Tlak"
+                    android:padding="3dip"
+
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:text="Puls"
+                    android:minWidth="40pt"
+                    android:padding="3dip"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:text="13.03.1991."
+                    android:padding="3dip"
+                    android:gravity="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableA1"/>
+
+                <TextView
+                    android:text="Open..."
+                    android:padding="3dip"
+                    android:gravity="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableA2" />
+
+                <TextView
+                    android:text="Ctrl-O"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableA3"/>
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+                <TextView
+                    android:text="02.03.2015."
+                    android:padding="3dip"
+                    android:gravity="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableB1"/>
+
+                <TextView
+                    android:text="Ctrl-S"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableB2"/>
+
+                <TextView
+                    android:text="Ctrl-S"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableB3"/>
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+                <TextView
+                    android:text="13.02.1991."
+                    android:padding="3dip"
+                    android:gravity="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableC1"/>
+
+                <TextView
+                    android:text="Ctrl-Shift-S"
+                    android:gravity="center"
+                    android:padding="3dip"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableC2"/>
+
+                <TextView
+                    android:text="Save As..."
+                    android:padding="3dip"
+                    android:gravity="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvTableC3"/>
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+        </TableLayout>
 
 
         <ImageButton
@@ -127,6 +250,9 @@
             android:background="@color/colorBackground" />
 
     </LinearLayout>
+
+
+
 
 
 </LinearLayout>
