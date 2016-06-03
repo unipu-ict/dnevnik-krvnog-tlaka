@@ -126,17 +126,34 @@ public class UnosActivity extends AppCompatActivity {
 
         CharSequence broj = ((Button)v).getText();
 
+        // unos u SYS edit text
         if (etSistolicki.isFocused()) {
+            if(etSistolicki.getText().length() > 2) {
+                Toast.makeText(this, "Možete unijeti maksimalno 3 znamenke!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             etSistolicki.append(broj);
             if (etSistolicki.length() == 3)
                 etDijastolicki.requestFocus();
         }
+        // unos u DIA edit text
         else if (etDijastolicki.isFocused()) {
+            if(etDijastolicki.getText().length() > 2) {
+                Toast.makeText(this, "Možete unijeti maksimalno 3 znamenke!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             etDijastolicki.append(broj);
+            if(etDijastolicki.getText().charAt(0) != '1' && etDijastolicki.getText().length() == 2)
+                etPuls.requestFocus();
             if (etDijastolicki.length() == 3)
                 etPuls.requestFocus();
         }
+        // unos u PLS edit text
         else if (etPuls.isFocused()) {
+            if(etPuls.getText().length() > 2) {
+                Toast.makeText(this, "Možete unijeti maksimalno 3 znamenke!", Toast.LENGTH_SHORT).show();
+                return;
+            }
             etPuls.append(broj);
         }
     }

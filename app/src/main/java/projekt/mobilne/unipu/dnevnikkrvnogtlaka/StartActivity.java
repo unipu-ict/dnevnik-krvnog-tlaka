@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 public class StartActivity extends AppCompatActivity {
@@ -16,9 +15,6 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         // Pokretanje aplikacije i progress bar-a
         new StartApplication().execute(Short.parseShort("10"));
-
-
-
     }
 
     private class StartApplication extends
