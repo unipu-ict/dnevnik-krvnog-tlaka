@@ -17,30 +17,36 @@
 
                 android:id="@+id/button1"
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="1"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="2"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="3"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
         </LinearLayout>
 
@@ -53,30 +59,36 @@
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="4"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="5"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="6"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
 
 
@@ -91,30 +103,36 @@
 
             <Button
                 android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="7"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="8"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="9"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
 
 
@@ -130,28 +148,34 @@
 
             <Button
                 android:id="@+id/buttonBrisanje"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="c"
-                android:textStyle="bold"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/button0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="0"
-                android:textStyle="bold"
                 android:onClick="onClickNumberButton"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
             <Button
                 android:id="@+id/buttonUnos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
                 android:text="OK"
-                android:textStyle="bold"
-                android:textSize="10dp" />
+                android:textSize="20dp"
+                android:textColor="#176E8F"
+                android:singleLine="false"
+                android:backgroundTint="#AED9EA" />
 
         </LinearLayout>
 

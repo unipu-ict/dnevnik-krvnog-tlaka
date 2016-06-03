@@ -29,7 +29,13 @@
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:text="Zadnje mjerenje: ("
-            android:id="@+id/tvZadnjeMjerenje"/>
+            android:id="@+id/tvZadnjeMjerenje"
+            android:textColor="#176E8F"
+            android:focusable="false"
+            android:enabled="false"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textIsSelectable="false" />
 
         <TableLayout
             android:layout_width="wrap_content"
@@ -45,14 +51,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="75dp"
-                    android:text="Sistolički:"/>
+                    android:text="Sistolički:"
+                    android:textColor="#176E8F"
+                    android:textSize="22dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(vrijednost)"
                     android:gravity="center"
-                    android:id="@+id/tvSistolicki"/>
+                    android:id="@+id/tvSistolicki"
+                    android:textColor="#176E8F"
+                    android:textSize="22dp"
+                    android:layout_marginTop="5dp" />
 
             </TableRow>
 
@@ -62,14 +75,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dijastolički:"
-                    />
+                    android:textColor="#176E8F"
+                    android:textSize="22dp"
+                    android:layout_marginRight="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(vrijednost)"
                     android:gravity="center"
-                    android:id="@+id/tvDijastolicki"/>
+                    android:id="@+id/tvDijastolicki"
+                    android:textColor="#176E8F"
+                    android:textSize="22dp" />
 
             </TableRow>
 
@@ -78,14 +95,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Puls:"/>
+                    android:text="Puls:"
+                    android:textColor="#176E8F"
+                    android:textSize="22dp"
+                    android:layout_marginRight="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(vrijednost)"
                     android:gravity="center"
-                    android:id="@+id/tvPuls"/>
+                    android:id="@+id/tvPuls"
+                    android:textColor="#176E8F"
+                    android:textSize="22dp" />
 
             </TableRow>
 
@@ -94,7 +116,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="10dp"
             android:id="@+id/buttonDodajTlak"
             android:layout_gravity="top|end"
             android:src="@drawable/add"
@@ -118,7 +140,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:stretchColumns="1"
-            android:paddingTop="16dp">
+            android:paddingTop="20dp"
+            android:layout_marginTop="10dp">
 
             <View
                 android:layout_height="2dip"
@@ -131,7 +154,10 @@
                     android:padding="3dip"
                     android:minWidth="65pt"
                     android:gravity="center"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#176E8F"
+                    android:textSize="18dp"
+                    android:background="#AED9EA" />
 
 
                 <TextView
@@ -139,14 +165,20 @@
                     android:padding="3dip"
 
                     android:gravity="center"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#176E8F"
+                    android:textSize="18dp"
+                    android:background="#AED9EA" />
 
                 <TextView
                     android:text="Puls"
                     android:minWidth="40pt"
                     android:padding="3dip"
                     android:gravity="center"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#176E8F"
+                    android:textSize="18dp"
+                    android:background="#AED9EA" />
 
 
             </TableRow>
@@ -162,21 +194,27 @@
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableA1"/>
+                    android:id="@+id/tvTableA1"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:text="Open..."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableA2" />
+                    android:id="@+id/tvTableA2"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:text="Ctrl-O"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableA3"/>
+                    android:id="@+id/tvTableA3"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
             </TableRow>
 
             <View
@@ -189,21 +227,27 @@
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableB1"/>
+                    android:id="@+id/tvTableB1"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:text="Ctrl-S"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableB2"/>
+                    android:id="@+id/tvTableB2"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:text="Ctrl-S"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableB3"/>
+                    android:id="@+id/tvTableB3"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
             </TableRow>
 
             <View
@@ -216,21 +260,27 @@
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableC1"/>
+                    android:id="@+id/tvTableC1"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:text="Ctrl-Shift-S"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableC2"/>
+                    android:id="@+id/tvTableC2"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:text="Save As..."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
-                    android:id="@+id/tvTableC3"/>
+                    android:id="@+id/tvTableC3"
+                    android:textColor="#176E8F"
+                    android:textSize="16dp" />
             </TableRow>
 
             <View
@@ -247,7 +297,9 @@
             android:id="@+id/buttonPovijest"
             android:layout_gravity="top|end"
             android:src="@drawable/doctor"
-            android:background="@color/colorBackground" />
+            android:background="@color/colorBackground"
+            android:layout_marginTop="20dp"
+            android:paddingTop="20dp" />
 
     </LinearLayout>
 

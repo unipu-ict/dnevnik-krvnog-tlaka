@@ -21,7 +21,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="SYS:"/>
+                android:text="SYS:"
+                android:textColor="#176E8F"
+                android:textSize="25dp"
+                android:layout_marginTop="35dp"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -30,7 +34,10 @@
                 android:minWidth="150dp"
                 android:id="@+id/etSistolicki"
                 android:gravity="center"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:textColor="#176E8F"
+                android:textSize="25dp"
+                android:layout_marginTop="35dp" />
 
         </TableRow>
 
@@ -40,7 +47,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="DIA:"/>
+                android:text="DIA:"
+                android:textColor="#176E8F"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -48,7 +58,9 @@
                 android:minWidth="150dp"
                 android:id="@+id/etDijastolicki"
                 android:gravity="center"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:textColor="#176E8F"
+                android:textSize="25dp" />
 
         </TableRow>
 
@@ -58,7 +70,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="♥"/>
+                android:text="♥"
+                android:textColor="#176E8F"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -66,7 +81,9 @@
                 android:minWidth="150dp"
                 android:id="@+id/etPuls"
                 android:gravity="center"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:textColor="#176E8F"
+                android:textSize="25dp" />
 
         </TableRow>
 
@@ -75,7 +92,10 @@
 
 
 
-    <include layout="@layout/content_unos" />
+    <include layout="@layout/content_unos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
 
 
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -142,7 +141,7 @@ public class PregledActivity extends AppCompatActivity {
         PieData data = new PieData(labels, dataset);
 
         // Postavljanje seta boja za PieChart
-        dataset.setColors(ColorTemplate.JOYFUL_COLORS);
+        dataset.setColors(ColorTemplate.COLORFUL_COLORS);
 
         // Dodavanje naziva legende
         //pieChart.setDescription("Legenda");
