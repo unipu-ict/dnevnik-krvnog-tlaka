@@ -88,7 +88,7 @@ public class PregledActivity extends AppCompatActivity {
         PieChart pieChart = (PieChart) findViewById(R.id.chart);
 
         // ArrayList koji sadrži nazive tlakova za legendu
-        ArrayList<String> labels = new ArrayList<String>();
+        ArrayList<String> labels = new ArrayList<>();
         // ArrayList koji sadrži instance pojedinih izmjerenih tlakova
         ArrayList<Entry> entries = new ArrayList<>();
 
@@ -143,8 +143,8 @@ public class PregledActivity extends AppCompatActivity {
         // Postavljanje seta boja za PieChart
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
 
-        // Dodavanje naziva legende
-        //pieChart.setDescription("Legenda");
+        //Dodavanje naziva legende
+        pieChart.setDescription("");
         pieChart.setData(data);
 
         // Postavljanje teksta u sredinu PieCharta

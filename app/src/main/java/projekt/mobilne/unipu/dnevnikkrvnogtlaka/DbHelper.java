@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.text.SimpleDateFormat;
@@ -58,30 +59,40 @@ public class DbHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+    // Javna metoda za brisanje unosa krvnog tlaka koja onemogućava SQL injecting
+    public void obrisiUnos(int id, int puls) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, "id=? and puls=?", new String[]{String.valueOf(id), String.valueOf(puls)});
+    }
     // endregion
 
     // region KURSOR
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME + " ORDER BY ID DESC", null);
+
         return res;
     }
 
     public Cursor getZadnjaTri() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 3", null);
+
         return res;
     }
 
     public Cursor getZadnji() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 1", null);
+
         return res;
     }
 
     public Cursor getZadnjiDatum() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select datum from " + TABLE_NAME +" ORDER BY ID DESC LIMIT 1", null);
+
         return res;
     }
     // endregion

@@ -190,7 +190,6 @@
             <TableRow>
 
                 <TextView
-                    android:text="13.03.1991."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
@@ -199,7 +198,6 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:text="Open..."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
@@ -208,7 +206,6 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:text="Ctrl-O"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
@@ -223,7 +220,6 @@
 
             <TableRow>
                 <TextView
-                    android:text="02.03.2015."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
@@ -232,7 +228,6 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:text="Ctrl-S"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
@@ -241,7 +236,6 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:text="Ctrl-S"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
@@ -256,7 +250,6 @@
 
             <TableRow>
                 <TextView
-                    android:text="13.02.1991."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"
@@ -265,7 +258,6 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:text="Ctrl-Shift-S"
                     android:gravity="center"
                     android:padding="3dip"
                     android:textStyle="italic"
@@ -274,7 +266,6 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:text="Save As..."
                     android:padding="3dip"
                     android:gravity="center"
                     android:textStyle="italic"

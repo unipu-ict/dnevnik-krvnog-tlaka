@@ -23,8 +23,6 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String komentar;
-
     // region PRIVATNE VARIJABLE
     private ImageButton buttonNoviUnos;
     private ImageButton buttonPovijest;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private DbHelper myDb;
 
 
-    // datum, vrijeme, vrijednost
+    // Datum, vrijeme i vrijednost u tablici
     private TextView tvDatum1;
     private TextView tvDatum2;
     private TextView tvDatum3;

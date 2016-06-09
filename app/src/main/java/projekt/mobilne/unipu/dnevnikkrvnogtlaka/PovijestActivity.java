@@ -1,15 +1,13 @@
 package projekt.mobilne.unipu.dnevnikkrvnogtlaka;
 
+
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -17,7 +15,6 @@ public class PovijestActivity extends AppCompatActivity {
 
     // region PRIVATNE VARIJABLE
     private DbHelper myDb;
-    private TextView povijest;
     // endregion
 
     @Override
@@ -35,9 +32,6 @@ public class PovijestActivity extends AppCompatActivity {
             transaction.add(android.R.id.content, lstFragment, "lstfragment");
             transaction.commit();
         }
-
-        //povijest = (TextView) findViewById(R.id.tbPovijest);
-        //povijest.setText("Povijest unosa:\n");
 
         myDb = new DbHelper(this);
         myDb.getAllData();
@@ -96,9 +90,6 @@ public class PovijestActivity extends AppCompatActivity {
         buffer.append("dosta visoki: "+ dostavisoki+ "\n");
         buffer.append("hipertenzija: "+ hipertenzija+ "\n");
         buffer.append("izolirani: " + izolirani + "\n");
-
-        //povijest.append(buffer);
-        //povijest.append(buffer2);
     }
 
     // region NAVIGACIJA
@@ -111,13 +102,10 @@ public class PovijestActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         View v = getWindow().getDecorView().findFocus();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.pocetna_menu) {
             pocetnaStranica(v);
             return true;
