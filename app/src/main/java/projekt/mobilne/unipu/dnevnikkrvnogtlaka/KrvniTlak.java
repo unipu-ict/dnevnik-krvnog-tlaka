@@ -46,10 +46,10 @@ public class KrvniTlak {
 
         StringBuilder sb = new StringBuilder();
         sb.append("Vrijeme: ");
-        sb.append("\t\t\t" + getVrijeme() + "\nSistolički: ");
-        sb.append("\t\t" + getSistolicki() + " mmHg\nDijastolički: ");
-        sb.append("\t" + getDijastolicki() + " mmHg\nPuls:");
-        sb.append("\t\t\t\t" + getPuls() + "/min\n");
+        sb.append("\t\t\t\t" + getVrijeme() + "\nSistolički: ");
+        sb.append("\t\t\t" + getSistolicki() + " mmHg\nDijastolički: ");
+        sb.append("\t\t" + getDijastolicki() + " mmHg\nPuls:");
+        sb.append("\t\t\t\t\t\t" + getPuls() + "/min\n");
 
         return sb.toString();
     }

@@ -52,7 +52,7 @@ public class LstFragment extends ListFragment {
             );
             arrayList.add(kt);
 
-            arrayListTv.add("Tlak br. " + brojac + " i indeks: " + cur.getString(0));
+            arrayListTv.add(cur.getString(4));
         }
         cur.close();
 
